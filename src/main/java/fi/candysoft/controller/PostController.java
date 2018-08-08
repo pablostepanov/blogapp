@@ -32,8 +32,7 @@ public class PostController {
 
             model.addAttribute("post", post);
 
-            return "/postForm";
-
+            return "/createPost";
 
     }
 
@@ -42,8 +41,9 @@ public class PostController {
                                 BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            return "/postForm";
+            return "/createPost";
         } else {
+            System.out.println("==========in PostController.createNewPost()=====");
             postService.save(post);
             return "redirect:/" ;
         }

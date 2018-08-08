@@ -4,6 +4,7 @@ import fi.candysoft.service.PostService;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import fi.candysoft.model.Post;
 import fi.candysoft.repository.PostRepository;
@@ -22,12 +23,13 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Post save(Post post) {
+        System.out.println("==========in PostServiceImpl.save()=====");
         return postRepository.saveAndFlush(post);
     }
 
     @Override
     public Page<Post> findAllPosts() {
-        return postRepository.findAllByOrderByCreateDateDesc();
+        return postRepository.findAllByOrderByCreateDateDesc(new PageRequest(0, 100));
     }
 
     @Override
