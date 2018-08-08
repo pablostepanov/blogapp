@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 
 import fi.candysoft.model.Post;
 import fi.candysoft.repository.PostRepository;
+import java.util.Optional;
 
 
 @Service
@@ -32,6 +33,12 @@ public class PostServiceImpl implements PostService {
     @Override
     public void delete(Post post) {
         postRepository.delete(post);
+    }
+
+
+    @Override
+    public Optional<Post> findForId(Long id) {
+        return postRepository.findById(id);
     }
 
 }

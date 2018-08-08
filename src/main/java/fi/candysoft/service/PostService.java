@@ -3,6 +3,7 @@ package fi.candysoft.service;
 import fi.candysoft.model.Post;
 
 import org.springframework.data.domain.Page;
+import java.util.Optional;
 
 public interface PostService {
 
@@ -17,6 +18,10 @@ public interface PostService {
      * Finds a {@link Page) of all {@link Post} ordered by date
      */
     Page<Post> findAllPosts();
+
+
+    Optional<Post> findForId(Long id);
+
 
     /**
      *
