@@ -19,7 +19,15 @@ The current date and time: <b th:text="${execInfo.now.time}"></b>
 
     <a class="newPost" th:href="@{/newPost}">Add new Post</a>
 
+</div>
 
+<div class="starter-template panel" th:each="post : ${posts}">
+    <div class="panel-heading">
+        <h1><a th:text="${post.title}">Title</a></h1>
+        <div th:text="'Created: ' + ${#dates.format(post.createDate, 'dd-MMM-yyyy')}"></div>
+    </div>
+    <h3 class="panel-body" th:text="${post.body}">Body</h3>
+    <br></br>
 </div>
 
 </body>

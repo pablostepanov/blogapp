@@ -7,6 +7,7 @@ import fi.candysoft.service.PostService;
 import fi.candysoft.model.Post;
 import org.springframework.data.domain.Page;
 import java.util.List;
+import org.springframework.ui.Model;
 
 @Controller
 public class HomeController {
@@ -19,7 +20,7 @@ public class HomeController {
     }
 
     @RequestMapping("/")
-    public String index() {
+    public String index(Model model) {
         Page<Post> page = postService.findAllPosts();
 
         List <Post> posts = page.getContent();
@@ -29,7 +30,7 @@ public class HomeController {
             System.out.println("Title = " + post.getTitle() + " Body = " + post.getBody() + " Creation date = " + post.getCreateDate());
         }
 
-        //Pager pager = new Pager(posts);
+        model.addAttribute("posts", posts);
 
         return "index";
     }
